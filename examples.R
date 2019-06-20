@@ -1,4 +1,7 @@
 source("asymptotic_test.R")
+source("bootstrap_test.R")
+
+
 alpha=0.05
 
 nitren_data  = matrix(data=c(9, 13, 13, 48,24, 18, 20, 72),
