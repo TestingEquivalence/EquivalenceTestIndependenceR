@@ -147,8 +147,28 @@ bootstrap_test_absolute<-function(tab, alpha,
   return(res$root)
 }
 
-
-
+#' The bootstrap test is based on the re-sampling method called bootstrap.
+#' The bootstrap test is more precise and reliable than the asymptotic test.
+#' However, it should be used carefully because the test is approximate 
+#' and may be anti-conservative. 
+#' In order to obtain a conservative test reducing of alpha
+#' (usually halving) or slight shrinkage of the tolerance parameter epsilon
+#' may be appropriate. We prefer the slight shrinkage of the tolerance parameter 
+#' because it is more effective and the significance level remains unchanged.
+#'
+#' The test statistic is scaled Euclidian norm of the relative deviation
+#' between the contingency table and the product measure of the marginal distributions.
+#' \code{bootstrap_test_relative} bootstrap test for approximate row column independence
+#' in two way contingency tables. 
+#' The test statistic is scaled Euclidian norm of the relative deviation
+#' between the contingency table and the product measure of the marginal distributions.
+#' @param tab contingency table containing the counts of events
+#' @param alpha significance level
+#' @param nSimulation number of bootstrap samples, default 10000 
+#' @param nExteriorPoints number of random directions to search for a boundary point,
+#' default is (nrow(tab)+ncol(tab))*50
+#' @return test returns the minimum tolerance parameter epsilon,
+#' for which the approximate independence can be shown
 
 bootstrap_test_relative<-function(tab, alpha, 
                                   nSimulation=10000, 
