@@ -77,12 +77,13 @@ protoBstTest<-function(tab,n,distance,eps,exteriorPoints,nSimulation){
 #' The bootstrap test is based on the re-sampling method called bootstrap.
 #' The bootstrap test is more precise and reliable than the asymptotic test.
 #' However, it should be used carefully because the test is approximate 
-#' and may be anti conservative. 
+#' and may be anti-conservative. 
 #' In order to obtain a conservative test reducing of alpha
 #' (usually halving) or slight shrinkage of the tolerance parameter epsilon
 #' may be appropriate. We prefer the slight shrinkage of the tolerance parameter 
-#' because it is more effective and the significance level remains unchanged. 
-#' The test statistic is scaled Euclidian distance between the counting frequencies
+#' because it is more effective and the significance level remains unchanged.
+#'  
+#' The test statistic is scaled Euclidian distance between the contingency table
 #' and the product measure of the marginal distributions.
 #' \code{bootstrap_test_absolute} bootstrap test for approximate row column independence
 #' in two way contingency tables. 
@@ -90,8 +91,10 @@ protoBstTest<-function(tab,n,distance,eps,exteriorPoints,nSimulation){
 #' and the product measure of the marginal distributions.
 #' @param tab contingency table containing the counts of events
 #' @param alpha significance level
-#' 
-#' @return tests returns the minimum tolerance parameter epsilon,
+#' @param nSimulation number of bootstrap samples, default 10000 
+#' @param nExteriorPoints number of random directions to search for a boundary point,
+#' default is (nrow(tab)+ncol(tab))*50
+#' @return test returns the minimum tolerance parameter epsilon,
 #' for which the approximate independence can be shown
 
 bootstrap_test_absolute<-function(tab, alpha, 
@@ -143,6 +146,9 @@ bootstrap_test_absolute<-function(tab, alpha,
   res=uniroot(ff,c(0,eps))
   return(res$root)
 }
+
+
+
 
 bootstrap_test_relative<-function(tab, alpha, 
                                   nSimulation=10000, 

@@ -17,21 +17,23 @@ asympt_stdev<-function(p,derivative){
 
 
 #' The asymptotic test is based on the asymptotic distribution of the test statistic. 
-#' The test statistic is scaled Euclidian distance between the counting frequencies
+#' The test statistic is scaled Euclidian distance between the contingency table
 #' and the product measure of the marginal distributions.
-#' Therefore the asymptotic test need some sufficiently large number of the observations
+#' The asymptotic test needs some sufficiently large number of the observations
 #' in any cell of the contingency table.
 #' It should be used carefully because the test is approximate 
-#' and may be anti conservative at some points. 
+#' and may be anti-conservative at some points. 
 #' In order to obtain a conservative test reducing of alpha  (usually halving) or
-#' slight shrinkage of the tolerance parameter epsilon may be appropriate. 
+#' slight shrinkage of the tolerance parameter epsilon may be appropriate.
+#' We prefer the slight shrinkage of the tolerance parameter 
+#' because it is more effective and the significance level remains unchanged.
 #' \code{asymptotic_test_absolute} asymptotic test for approximate row column independence
 #' in two way contingency tables. 
-#' The test statistic is scaled Euclidian distance between the counting frequencies
+#' The test statistic is scaled Euclidian distance between the contingency table
 #' and the product measure of the marginal distributions.
 #' @param tab contingency table containing the counts of events
 #' @param alpha significance level
-#' @return tests returns the minimum tolerance parameter epsilon,
+#' @return test returns the minimum tolerance parameter epsilon,
 #' for which the approximate independence can be shown
 
 asymptotic_test_absolute<-function(tab, alpha){
@@ -50,21 +52,23 @@ asymptotic_test_absolute<-function(tab, alpha){
 }
 
 #' The asymptotic test is based on the asymptotic distribution of the test statistic. 
-#' The test statistic is scaled Euclidian norm of the relative deviations 
-#' between the counting frequencies and the product measure of the marginal distributions.
-#' Therefore the asymptotic test need some sufficiently large number of the observations
+#' The test statistic is scaled Euclidian norm of the relative deviation
+#' between the contingency table and the product measure of the marginal distributions.
+#' The asymptotic test needs some sufficiently large number of the observations
 #' in any cell of the contingency table.
 #' It should be used carefully because the test is approximate 
-#' and may be anti conservative at some points. 
+#' and may be anti-conservative at some points. 
 #' In order to obtain a conservative test reducing of alpha  (usually halving) or
 #' slight shrinkage of the tolerance parameter epsilon may be appropriate. 
+#' We prefer the slight shrinkage of the tolerance parameter 
+#' because it is more effective and the significance level remains unchanged.
 #' \code{asymptotic_test_relative} asymptotic test for approximate row column independence
 #' in two way contingency tables. 
-#' The test statistic is scaled Euclidian norm of the relative deviations 
-#' between the counting frequencies and the product measure of the marginal distributions.
+#' The test statistic is scaled Euclidian norm of the relative deviation 
+#' between the contingency table and the product measure of the marginal distributions.
 #' @param tab contingency table containing the counts of events
 #' @param alpha significance level
-#' @return tests returns the minimum tolerance parameter epsilon,
+#' @return test returns the minimum tolerance parameter epsilon,
 #' for which the approximate independence can be shown
 
 asymptotic_test_relative<-function(tab, alpha){
